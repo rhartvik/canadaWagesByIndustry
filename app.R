@@ -22,18 +22,26 @@ regions <- c("Central region",
 ui <- fluidPage(
 
     titlePanel("Wages in Canada by Industry"),
+    p("Explore wage statistics for Canadian regions from 2001 through 2015."),
+    br(),
 
     sidebarLayout(
         sidebarPanel(
+            p("Select the industry and regions that you are interested in seeing."),
+
             selectInput("industries", "Industry:",
                         industries, "Total employees"),
             checkboxGroupInput("regions", "Regions:",
                                regions, "Western region"),
+            br(),
+            p("Select the wage metric to display in the graph."),
             radioButtons("metrics", "Wage metric:",
                          metrics, "Average hourly wage rate")
         ),
 
         mainPanel(
+            p("Hover your cursor above the graph to see the interactive action bar."),
+            p("Hover your cursor over points to see their exact co-ordinates."),
             plotly::plotlyOutput("wagePlot")
         )
     )
