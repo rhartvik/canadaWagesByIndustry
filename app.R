@@ -64,7 +64,7 @@ server <- function(input, output) {
         for (region in input$regions) {
             fig <- fig %>% add_trace(y = data[[region]], name = region, type="scatter", mode = 'lines+markers')
         }
-        fig
+        fig %>% layout(title = 'Wages in Canada', showlegend = TRUE)
     })
 }
 
